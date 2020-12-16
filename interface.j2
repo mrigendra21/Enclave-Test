@@ -1,15 +1,29 @@
 <config>
 		<interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
-		{% for interface in interfaces %}
+		{% for ether in interfaces %}
 			<interface>
-				<name>{{interface.name}}</name>
-				<description>{{interface.desc}}</description>
+				<name>{{ether.name}}</name>
+				<description>{{ether.desc}}</description>
 				<type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
-				<enabled>{{interface.enabled}}</enabled>
+				<enabled>{{ether.enabled}}</enabled>
 				<ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
 					<address>
-						<ip>{{interface.ip}}</ip>
-						<netmask>{{interface.mask}}</netmask>
+						<ip>{{ether.ip}}</ip>
+						<netmask>{{ether.mask}}</netmask>
+					</address>
+				</ipv4>
+				<ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"/>
+			</interface>
+		{% endfor %}
+		{% for loopback in loopbacks %}
+			<interface>
+				<name>{{loopback.name}}</name>
+				<type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:softwareLoopback</type>
+				<enabled>{{loopback.enabled}}</enabled>
+				<ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+					<address>
+						<ip>{{loopback.ip}}</ip>
+						<netmask>{{loopback.mask}}</netmask>
 					</address>
 				</ipv4>
 				<ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"/>

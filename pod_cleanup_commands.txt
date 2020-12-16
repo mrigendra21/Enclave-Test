@@ -1,0 +1,5 @@
+no interface loopback 0
+no interface loopback 1
+default interface gig2
+default interface gi3
+no router ospf 1
