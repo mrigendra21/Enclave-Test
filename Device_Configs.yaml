@@ -1,0 +1,148 @@
+# Network Devices
+
+devices:
+  - name: Pod_A_R1
+    host_ip: '192.168.166.101'
+    netconf_port: 830
+    interfaces:
+      - name: GigabitEthernet2
+        desc: Connected to Pod_A_R2_Gig2
+        enabled: "true"
+        ip: '192.168.101.11'
+        mask: '255.255.255.0'
+      - name: GigabitEthernet3
+        desc: Connected to Pod_A_R3_Gig3
+        enabled: "true"
+        ip: '192.168.103.11'
+        mask: '255.255.255.0'
+      - name: Loopback 0
+        desc: used for overlay applications
+        enabled: "true"
+        ip: '1.1.1.1'
+        mask: '255.255.255.0'
+      - name: Loopback 1
+        desc: used for router id 
+        enabled: "true"
+        ip: '11.11.11.11'
+        mask: '255.255.255.0'                
+        
+    ospf:
+      process_id: "1"
+      networks:
+       - network: '192.168.101.0'
+         wildcard: '0.0.0.255'
+         area: "0"
+       - network: '192.168.103.0'
+         wildcard: '0.0.0.255'
+         area: "0"
+       - network: '1.1.1.0'
+         wildcard: '0.0.0.255'
+         area: "0"
+       - network: '11.11.11.0'
+         wildcard: '0.0.0.255'
+         area: "0"
+      interfaces:
+       - name: Loopback
+         number: 0
+         type: point-to-point
+       - name: Loopback
+         number: 1
+         type: point-to-point
+         
+  - name: Pod_A_R2
+    host_ip: '192.168.166.102'
+    netconf_port: 830
+    interfaces:
+      - name: GigabitEthernet2
+        desc: Connected to Pod_A_R1_Gig2
+        enabled: "true"
+        ip: '192.168.101.22'
+        mask: '255.255.255.0'
+      - name: GigabitEthernet3
+        desc: Connected to Pod_A_R3_Gig2
+        enabled: "true"
+        ip: '192.168.102.22'
+        mask: '255.255.255.0'
+      - name: Loopback 0
+        desc: used for overlay applications
+        enabled: "true"
+        ip: '2.2.2.2'
+        mask: '255.255.255.0'
+      - name: Loopback 1
+        desc: used for router id 
+        enabled: "true"
+        ip: '22.22.22.22'
+        mask: '255.255.255.0'                
+        
+    ospf:
+      process_id: "1"
+      networks:
+       - network: '192.168.101.0'
+         wildcard: '0.0.0.255'
+         area: "0"
+       - network: '192.168.102.0'
+         wildcard: '0.0.0.255'
+         area: "0"
+       - network: '2.2.2.0'
+         wildcard: '0.0.0.255'
+         area: "0"
+       - network: '22.22.22.0'
+         wildcard: '0.0.0.255'
+         area: "0"
+      interfaces:
+       - name: Loopback
+         number: 0
+         type: point-to-point
+       - name: Loopback
+         number: 1
+         type: point-to-point
+
+
+  - name: Pod_A_R3
+    host_ip: '192.168.166.103'
+    netconf_port: 830
+    interfaces:
+      - name: GigabitEthernet2
+        desc: Connected to Pod_A_R2_Gig3
+        enabled: "true"
+        ip: '192.168.102.33'
+        mask: '255.255.255.0'
+      - name: GigabitEthernet3
+        desc: Connected to Pod_A_R1_Gig3
+        enabled: "true"
+        ip: '192.168.103.33'
+        mask: '255.255.255.0'
+      - name: Loopback 0
+        desc: used for overlay applications
+        enabled: "true"
+        ip: '3.3.3.3'
+        mask: '255.255.255.0'
+      - name: Loopback 1
+        desc: used for router id 
+        enabled: "true"
+        ip: '33.33.33.33'
+        mask: '255.255.255.0'                
+        
+    ospf:
+      process_id: "1"
+      networks:
+       - network: '192.168.102.0'
+         wildcard: '0.0.0.255'
+         area: "0"
+       - network: '192.168.103.0'
+         wildcard: '0.0.0.255'
+         area: "0"
+       - network: '3.3.3.0'
+         wildcard: '0.0.0.255'
+         area: "0"
+       - network: '33.33.33.0'
+         wildcard: '0.0.0.255'
+         area: "0"
+      interfaces:
+       - name: Loopback
+         number: 0
+         type: point-to-point
+       - name: Loopback
+         number: 1
+         type: point-to-point
+

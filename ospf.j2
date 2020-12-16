@@ -1,0 +1,37 @@
+<config>		
+		<native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+			<router>
+				<router-ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
+					<ospf>
+						<process-id>
+							<id>{{ospf.process_id}}</id>
+						{% for nw in networks %}
+							<network>
+								<ip>{{nw.network}}</ip>
+								<wildcard>{{nw.wildcard}}</wildcard>
+								<area>{{nw.area}}</area>
+							</network>
+						{% endfor %}
+						</process-id>
+					</ospf>
+				</router-ospf>
+			</router>
+			{% for intf in interfaces %}
+			<interface>
+				<{{intf.name}}>
+					<name>{{intf.number}}</name>
+					<ip>
+						<router-ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
+							<ospf>
+								<network>
+									<{{intf.type}}/>
+								</network>
+							</ospf>
+						</router-ospf>
+					</ip>
+				</{{intf.name}}>
+			</interface>
+			{% endfor %}
+		</native>
+</config>
+
