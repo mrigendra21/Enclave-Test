@@ -15,12 +15,14 @@ devices:
         enabled: "true"
         ip: '192.168.103.11'
         mask: '255.255.255.0'
-      - name: Loopback 0
+    
+    loopbacks:
+      - name: Loopback0
         desc: used for overlay applications
         enabled: "true"
         ip: '1.1.1.1'
         mask: '255.255.255.0'
-      - name: Loopback 1
+      - name: Loopback1
         desc: used for router id 
         enabled: "true"
         ip: '11.11.11.11'
@@ -63,16 +65,17 @@ devices:
         enabled: "true"
         ip: '192.168.102.22'
         mask: '255.255.255.0'
-      - name: Loopback 0
+    loopbacks:
+      - name: Loopback0
         desc: used for overlay applications
         enabled: "true"
         ip: '2.2.2.2'
         mask: '255.255.255.0'
-      - name: Loopback 1
+      - name: Loopback1
         desc: used for router id 
         enabled: "true"
         ip: '22.22.22.22'
-        mask: '255.255.255.0'                
+        mask: '255.255.255.0'                 
         
     ospf:
       process_id: "1"
@@ -112,16 +115,17 @@ devices:
         enabled: "true"
         ip: '192.168.103.33'
         mask: '255.255.255.0'
-      - name: Loopback 0
+    loopbacks:
+      - name: Loopback0
         desc: used for overlay applications
         enabled: "true"
         ip: '3.3.3.3'
         mask: '255.255.255.0'
-      - name: Loopback 1
+      - name: Loopback1
         desc: used for router id 
         enabled: "true"
         ip: '33.33.33.33'
-        mask: '255.255.255.0'                
+        mask: '255.255.255.0'               
         
     ospf:
       process_id: "1"
