@@ -12,7 +12,7 @@ devices:
         mask: '255.255.255.0'
       - name: GigabitEthernet3
         desc: Connected to Pod_A_R3_Gig3
-        enabled: "true"
+        enabled: "false"
         ip: '192.168.103.11'
         mask: '255.255.255.0'
     
@@ -112,7 +112,7 @@ devices:
         mask: '255.255.255.0'
       - name: GigabitEthernet3
         desc: Connected to Pod_A_R1_Gig3
-        enabled: "true"
+        enabled: "false"
         ip: '192.168.103.33'
         mask: '255.255.255.0'
     loopbacks:
